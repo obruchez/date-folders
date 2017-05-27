@@ -1,6 +1,7 @@
-package org.bruchez.olivier
+package org.bruchez.olivier.datefolders
 
 import java.io.File
+
 import org.apache.commons.io.FilenameUtils
 import org.joda.time.LocalDate
 
