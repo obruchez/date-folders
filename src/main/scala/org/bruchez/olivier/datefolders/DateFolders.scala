@@ -40,15 +40,19 @@ object DateFolders {
   }
 
   def baseNameAndExtension(filename: String): (String, Option[String]) =
-    (FilenameUtils.getBaseName(filename),
-     Some(FilenameUtils.getExtension(filename)).filterNot(_.isEmpty))
+    (
+      FilenameUtils.getBaseName(filename),
+      Some(FilenameUtils.getExtension(filename)).filterNot(_.isEmpty)
+    )
 
   def baseNameAndExtension(file: File): (String, Option[String]) =
     baseNameAndExtension(file.getAbsolutePath)
 
-  def filesInDirectory(directory: File,
-                       recursive: Boolean,
-                       includeDirectories: Boolean): Seq[File] = {
+  def filesInDirectory(
+      directory: File,
+      recursive: Boolean,
+      includeDirectories: Boolean
+  ): Seq[File] = {
     val (directories, files) =
       Option(directory.listFiles()).fold(Seq[File]())(_.toSeq).partition(_.isDirectory)
     val subDirectoriesAndFiles =
